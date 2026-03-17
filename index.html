@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tailwind styles</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=menu"
+    />
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+    </style>
+  </head>
+  <body class="m-0 p-0">
+    <header class="p-10 m-10 bg-gray-200 text-black">
+      <nav class="bg-gray-400 text-white p-4">
+        <div class="flex justify-between relative">
+          <h1>Logo</h1>
+          <div class="group">
+          <button class="md:hidden lg:hidden">
+            <span class="material-symbols-outlined"> menu </span>
+          </button>
+          <div
+            class="absolute top-full right-0 hidden group-hover:block space-y-2 bg-gray-400"
+          >
+            <a href="/" class="block p-2">Home</a>
+            <a href="about.html" class="block p-2">About</a>
+            <a href="contact.html" class="block p-2">Contact</a>
+            <a href="profile" class="block p-2">Profile</a>
+          </div>
+          </div>
+        </div>
+      </nav>
+      <nav class="flex gap-6">
+        <ul class="hidden list-none gap-4 md:inline-flex lg:inline-flex">
+          <li>
+            <a href="/" class="block hover:bg-black hover:text-white hover:p-2"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="about.html"
+              class="block hover:bg-black hover:text-white hover:p-2"
+              >About</a
+            >
+          </li>
+          <li>
+            <a
+              href="contact.html"
+              class="block hover:bg-black hover:text-white hover:p-2"
+              >Contact</a
+            >
+          </li>
+          <li>
+            <a
+              href="profile.html"
+              class="block hover:bg-black hover:text-white hover:p-2"
+              >Profile</a
+            >
+          </li>
+          <li>
+            <button class="block hover:bg-black hover:text-white hover:p-2">
+              Login
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section
+        class="flex flex-wrap flex-col-1 md:flex-col-2 lg:flex-col-3 xl:flex-col-4 gap-4 justify-center align-center"
+      >
+        <div class="w-64 h-100 border-gray-300 rounded-md">
+          <img class="w-64 h-48" src="/images/darkLobby.png" alt="image" />
+          <p>Welcome to our website!</p>
+        </div>
+        <div>
+          <img class="w-64 h-48" src="/images/darkLobby.png" alt="image" />
+          <p>Welcome to our website!</p>
+        </div>
+        <div>
+          <img class="w-64 h-48" src="/images/darkLobby.png" alt="image" />
+          <p>Welcome to our website!</p>
+        </div>
+        <div>
+          <img class="w-64 h-48" src="/images/darkLobby.png" alt="image" />
+          <p>Welcome to our website!</p>
+        </div>
+        <div>
+          <img class="w-64 h-48" src="/images/darkLobby.png" alt="image" />
+          <p>Welcome to our website!</p>
+        </div>
+        <div>
+          <img class="w-64 h-48" src="/images/darkLobby.png" alt="image" />
+          <p>Welcome to our website!</p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
