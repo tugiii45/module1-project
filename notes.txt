@@ -1,5 +1,0 @@
-Tailwind has breakpoints
-sm -> small eg mobile
-md - medium screen sizes. eg tablet
-lg - large screens. eg laptop
-xl - eg tv
