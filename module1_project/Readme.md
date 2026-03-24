@@ -33,7 +33,7 @@ Contributions are welcome to improve the Lost Textbook Tracker project.
 
 Just follow the steps below:
 
-1. Clone the repository. 
+1. Clone the repository. ```gh repo clone tugiii45/module1-project```
 2. Open the project folder in VS Code.
 3. Open index.html file.
 4. Use **live server** to view the website.
