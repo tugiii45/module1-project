@@ -37,4 +37,6 @@ Just follow the steps below:
 2. Open the project folder in VS Code.
 3. Open index.html file.
 4. Use **live server** to view the website.
+
+
  
