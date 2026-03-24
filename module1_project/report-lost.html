@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Lost Book</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html"><img src="images/logo module 1.jpg" alt=""></a>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="report-lost.html">Report Lost Book</a></li>
+            <li><a href="report-found.html">Report Found Book</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <section class="page header">
+        <h1>Report Lost Book</h1>
+        <p>Fill in the details below to help others identify your lostbook</p>
+    </section>
+
+    <section class="form-section">
+        <form action="#" method="post" class="Report Form">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="book-title">Book Title</label>
+            <input type="text" id="book-title" name="book-title" required>
+
+            <label for="Book-code number">Book Code Number</label>
+            <input type="number" id="Book-code number" name="Book-code number" required>
+
+            <label for="location">Where was it last seen?</label>
+            <input type="text" id="location" name="location" required>
+
+            <label for="date">Date Last Seen</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="Description">Description</label>
+            <textarea id="Description" name="Description"rows="4" placeholder="color, conditon, special marks..."required></textarea>
+
+            <label for="contact">Your Contact Information(email, phone)</label>
+            <input type="text" id="contact" name="contact" required>
+
+            <button type="submit">Submit Report</button>
+
+        </form>
+    </section>
+    <footer>
+        <p>Copyright 2026 LostLeaf Book Tracker | All Rights Reserved</p>
+    
+</body>
+</html>
