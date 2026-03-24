@@ -9,6 +9,7 @@
     padding: 10px 20px;
     background-color: #FFC570;
     box-shadow: #007bff;
+    
 }
 
 .logo img {
@@ -32,6 +33,3 @@
     }
 .nav-links li a:hover {
     color: #547792;
-
-
-
