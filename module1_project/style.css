@@ -7,15 +7,15 @@
 
 body {
     font-family: Arial, sans-serif;
-    color: #2d3748;
+    color: #14532D;
     line-height: 1.6;
     font-size: 16px;
-    background-color: #f2f6fa;
+    background-color: #f5f5f5;
 }
 
-/* Navbar */
+
 .navbar {
-    background-color: #1a202c;
+    background-color: #406093;
     padding: 15px 40px;
     display: flex;
     justify-content: space-between;
@@ -29,9 +29,10 @@ body {
 }
 
 .navbar h1 {
-    color: #f6ad55;
+    color: black;
     margin: 0;
     font-size: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .nav-links {
@@ -44,19 +45,20 @@ body {
 }
 
 .nav-links a {
-    color: white;
+    color: black;
     text-decoration: none;
     font-weight: bold;
     font-size: 14px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .nav-links a:hover {
-    color: #f6ad55;
+    color: #86EFAC;
 }
 
-/* Hero Section */
+
 .hero {
-    background-color: #ffffff;
+    background-color: #85C79A;
     padding: 100px 20px 60px 20px;
     text-align: center;
     margin-top: 60px;
@@ -66,15 +68,17 @@ body {
     font-size: 32px;
     color: #1a202c;
     margin-bottom: 15px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .hero p {
-    font-size: 18px;
-    color: #4a5568;
+    font-size: 20px;
+    color: black;
     margin-bottom: 30px;
+    
 }
 
-/* Buttons */
+
 .hero-buttons {
     display: flex;
     justify-content: center;
@@ -84,10 +88,10 @@ body {
 
 .btn {
     padding: 12px 30px;
-    background-color: #3182ce;
-    color: white;
+    background-color: #22C55E;
+    color: white;;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 20px;
     font-weight: bold;
     font-size: 14px;
     border: none;
@@ -95,19 +99,19 @@ body {
 }
 
 .btn:hover {
-    background-color: #2b6cb0;
+    background-color: #16A34A;
 }
 
 .btn.secondary {
-    background-color: #4fd1c5;
-    color: #1a202c;
+    background-color: #22C55E;
+    color: white;
 }
 
 .btn.secondary:hover {
-    background-color: #38b2ac;
+    background-color: #16A34A;
 }
 
-/* Features/How It Works */
+
 .features {
     padding: 50px 20px;
     background-color: #f5f5f5;
@@ -148,9 +152,9 @@ body {
     font-size: 14px;
 }
 
-/* Page Headers */
+
 .page.header {
-    background-color: #ecf0f1;
+    background-color: #85C79A;
     padding: 40px 20px;
     text-align: center;
     border-bottom: 2px solid #27ae60;
@@ -161,14 +165,15 @@ body {
     font-size: 28px;
     color: #2c3e50;
     margin-bottom: 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .page.header p {
-    font-size: 16px;
-    color: #7f8c8d;
+    font-size: 20px;
+    color: black;
 }
 
-/* Forms */
+
 .form-section {
     max-width: 600px;
     margin: 40px auto;
@@ -227,7 +232,7 @@ button[type="submit"]:hover {
     background-color: #229954;
 }
 
-/* Contact Info */
+
 .contact-info {
     max-width: 600px;
     margin: 40px auto;
@@ -249,7 +254,7 @@ button[type="submit"]:hover {
     font-size: 14px;
 }
 
-/* Listings */
+
 .listings-section {
     max-width: 1000px;
     margin: 40px auto;
@@ -297,10 +302,10 @@ button[type="submit"]:hover {
     background-color: #2980b9;
 }
 
-/* Footer */
+
 footer {
-    background-color: #2c3e50;
-    color: white;
+    background-color: #4C8CE4;
+    color: #E2E8F0;
     text-align: center;
     padding: 20px;
     margin-top: 30px;
@@ -310,8 +315,6 @@ footer {
 footer p {
     margin: 0;
 }
-
-/* Mobile Responsive */
 @media (max-width: 768px) {
     .navbar {
         flex-direction: column;
@@ -351,4 +354,12 @@ footer p {
         width: 100%;
     }
 }
+.fa-brands fa-square-instagram{
+    color: #93C5FD;
+    padding: 20px;
+    font-size: 24px;
+    text-decoration: none;
+}
 
+.fa-brands fa-square-instagram:hover {
+    color: #E1306C;}
