@@ -323,6 +323,7 @@ footer p {
 }
 @media (max-width: 768px) {
     .navbar {
+        display: flex;
         flex-direction: column;
         gap: 10px;
     }
