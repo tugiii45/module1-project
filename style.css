@@ -5,31 +5,43 @@
         box-sizing: border-box;
     }
 
+:root {
+    --primary-green: #10b981;
+    --light-green: #d1fae5;
+    --dark-green: #064e3b;
+    --light-bg: #fefefe;
+    --accent: #f59e0b;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    color: #14532D;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--dark-green);
     line-height: 1.6;
     font-size: 16px;
-    background-color: #f5f5f5;
+    background-image: url('images/book.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-color: var(--light-bg); /* fallback */
 }
 
 
 .navbar {
-    background-color: #BABF94;
+    background-color: var(--light-green);
     padding: 15px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: absolute;
+    position: sticky;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
-    position: sticky;
 }
 
 .navbar h1 {
-    color: black;
+    color: var(--dark-green);
     margin: 0;
     font-size: 20px;
     font-family: Georgia, 'Times New Roman', Times, serif;
@@ -45,7 +57,7 @@ body {
 }
 
 .nav-links a {
-    color: black;
+    color: var(--dark-green);
     text-decoration: none;
     font-weight: bold;
     font-size: 14px;
@@ -53,27 +65,28 @@ body {
 }
 
 .nav-links a:hover {
-    color: #F5F5DC;
+    color: var(--accent);
 }
 
 
 .hero {
-    background-color: #BFA28C;
+    background-color: var(--light-green);
     padding: 100px 20px 60px 20px;
     text-align: center;
-    margin-top: 60px;
+    margin: 60px 20px 20px 20px;
+    border-radius: 8px;
 }
 
 .hero h1 {
     font-size: 48px;
-    color: #16A34A;
+    color: var(--primary-green);
     margin-bottom: 15px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .hero p {
     font-size: 20px;
-    color: black;
+    color: var(--dark-green);
     margin-bottom: 30px;
     
 }
@@ -89,10 +102,10 @@ body {
 
 .btn {
     padding: 12px 30px;
-    background-color: #BABF94;
-    color: #16A34A;
+    background-color: var(--primary-green);
+    color: white;
     text-decoration: none;
-    border-radius: 20px;
+    border-radius: 6px;
     font-weight: bold;
     font-size: 14px;
     border: none;
@@ -100,30 +113,32 @@ body {
 }
 
 .btn:hover {
-    background-color: #16A34A;
-    color: white;
+    background-color: var(--dark-green);
 }
 
 .btn.secondary {
-    background-color: #BABF94;
-    color: #16A34A;
+    background-color: white;
+    color: var(--primary-green);
+    border: 2px solid var(--primary-green);
 }
 
 .btn.secondary:hover {
-    background-color: #16A34A;
+    background-color: var(--primary-green);
     color: white;
 }
 
 
 .features {
     padding: 50px 20px;
-    background-color: #f5f5f5;
+    background-color: white;
     text-align: center;
+    margin: 20px;
+    border-radius: 8px;
 }
 
 .features h2 {
     font-size: 28px;
-    color: #2c3e50;
+    color: var(--dark-green);
     margin-bottom: 40px;
 }
 
@@ -137,43 +152,43 @@ body {
 }
 
 .feature {
-    background-color: white;
+    background-color: #f9f9f9;
     padding: 25px;
-    border-radius: 5px;
+    border-radius: 8px;
     width: 280px;
-    border: 1px solid #ddd;
+    border: 1px solid #e0e0e0;
 }
 
 .feature h3 {
-    color: #A98B76;
+    color: var(--accent);
     margin-bottom: 10px;
     font-size: bold;
 }
 
 .feature p {
-    color: black;
+    color: var(--dark-green);
     font-size: 14px;
 }
 
 
 .page.header {
-    background-color: #BFA28C;
+    background-color: var(--light-green);
     padding: 40px 20px;
     text-align: center;
-    border-bottom: 2px solid #BFA28C;
-    margin-top: 60px;
+    margin: 60px 20px 20px 20px;
+    border-radius: 8px;
 }
 
 .page.header h1 {
     font-size: 28px;
-    color: #16A34A;
+    color: var(--primary-green);
     margin-bottom: 10px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .page.header p {
     font-size: 20px;
-    color: black;
+    color: var(--dark-green);
 }
 
 
@@ -181,10 +196,10 @@ body {
    max-width: 600px;
     margin: 40px auto;
     padding: 30px 20px;
-    background-color: #ecf0f1;
-    border-radius: 10px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
     text-align: center;
-
+    border: 1px solid #e0e0e0;
 }
 
 form {
@@ -310,12 +325,13 @@ button[type="submit"]:hover {
 
 
 footer {
-    background-color: #F3E4C9;
-    color: black;
+    background-color: var(--light-green);
+    color: var(--dark-green);
     text-align: center;
-    padding: 20px;
+    padding: 15px 40px;
     margin-top: 30px;
     font-size: 14px;
+    font-weight: bold;
 }
 
 footer p {
