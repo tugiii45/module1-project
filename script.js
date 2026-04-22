@@ -109,38 +109,9 @@ function isLoggedIn() {
   return !!currentUser;
 }
 
-function register(username, password) {
-  if (users.find(u => u.username === username)) {
-    alert('Username exists!');
-    return false;
-  }
-  users.push({username, password});
-  saveUsers();
-  alert('Registered! Please log in.');
-  window.location.href = 'login.html';
-  return true;
-}
 
-function login(username, password) {
-  const user = users.find(u => u.username === username && u.password === password);
-  if (user) {
-    currentUser = username;
-    saveCurrentUser();
-    updateNav();
-    alert('Logged in!');
-    window.history.back();
-    return true;
-  }
-  alert('Invalid credentials!');
-  return false;
-}
 
-function logout() {
-  currentUser = null;
-  localStorage.removeItem('currentUser');
-  updateNav();
-  alert('Logged out!');
-}
+
 
 // Update nav links dynamically
 function updateNav() {

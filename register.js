@@ -12,3 +12,14 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
+function register(username, password) {
+  if (users.find(u => u.username === username)) {
+    alert('Username exists!');
+    return false;
+  }
+  users.push({username, password});
+  saveUsers();
+  alert('Registered! Please log in.');
+  window.location.href = 'login.html';
+  return true;
+}
