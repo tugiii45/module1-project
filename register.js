@@ -1,3 +1,4 @@
+// Register page init - sets up form handler
 document.addEventListener('DOMContentLoaded', function() {
   updateNav();
 
@@ -11,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+
 
 function register(username, password) {
   if (users.find(u => u.username === username)) {

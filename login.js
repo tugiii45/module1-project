@@ -1,3 +1,4 @@
+// Login page init - sets up form handler
 document.addEventListener('DOMContentLoaded', function() {
   updateNav();
 
@@ -11,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+
 
 function login(username, password) {
   const user = users.find(u => u.username === username && u.password === password);

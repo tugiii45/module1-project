@@ -1,18 +1,13 @@
 
 
-// Users array and current user - localStorage
+// Global state - users, current user, books from localStorage
 let users = JSON.parse(localStorage.getItem('users')) || [];
 let currentUser = localStorage.getItem('currentUser');
-
-// Main book list - grows with user reports
-// localStorage saves it when page closes
 let books = [];
 
 
- /**
- * Loads books: browser save first, then data.json, then samples
- * Calls displayBooks to show them
- */
+
+// Load books from localStorage, data.json, or defaults
 async function loadBooks() {
   const saved = localStorage.getItem('books');
   if (saved) {
@@ -45,25 +40,26 @@ async function loadBooks() {
   }
  }
 
- /**
- * Saves book list to browser storage
- */
+
+// Save users to localStorage
 function saveUsers() {
   localStorage.setItem('users', JSON.stringify(users));
 }
 
+
+// Save current user to localStorage
 function saveCurrentUser() {
   localStorage.setItem('currentUser', currentUser);
 }
 
+
+// Save books to localStorage
 function saveBooks() {
   localStorage.setItem('books', JSON.stringify(books));
 }
 
-/**
- * Saves form data: lost or found book details to list
- * Clears form, alerts, goes to listings
- */
+
+// Save report data (lost/found books)
 function saveReportData(event) {
   event.preventDefault();
   if (!isLoggedIn()) {
@@ -104,7 +100,8 @@ function saveReportData(event) {
   window.location.href = 'listings.html';
 }
 
-// Auth functions
+
+// Check if user is logged in
 function isLoggedIn() {
   return !!currentUser;
 }
@@ -113,7 +110,8 @@ function isLoggedIn() {
 
 
 
-// Update nav links dynamically
+
+// Update nav based on login status
 function updateNav() {
   const authLi = document.getElementById('auth-link');
   if (authLi) {
@@ -125,7 +123,9 @@ function updateNav() {
   }
 }
 
+
  
+// Render books as cards
 function displayBooks(bookArray = books) {
   const container = document.querySelector('.listings-section');
   if (!container) return;
@@ -156,9 +156,8 @@ function displayBooks(bookArray = books) {
   });
 }
 
-/**
- * Delete book after confirm, save & refresh
- */
+
+// Delete book after confirmation
 function deleteBook(id) {
   if (!confirm('Delete? Cannot undo.')) return;
   books = books.filter(b => b.id !== id);
@@ -166,13 +165,14 @@ function deleteBook(id) {
   displayBooks();
 }
 
-/**
- * Claim found book (remove), save & refresh  
- */
+
+
+// Claim found book (remove from list)
 function claimBook(id) {
   if (!confirm('Claim book? Removes from list.')) return;
   books = books.filter(b => b.id !== id);
   saveBooks();
   displayBooks();
 }
+
 
