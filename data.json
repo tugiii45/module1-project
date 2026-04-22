@@ -1,0 +1,12 @@
+ {"books" : [
+    {"title": "KLB Mathematics Form 4", "bookCode": "KLB-O743", "Status": "Lost",  "id": 1},
+    {"title": "Spotlight Chemistry Form 2", "bookCode": "KLB-C456", "Status": "Found",  "id": 2},
+    {"title": "Oxford English Dictionary", "bookCode": "OED-123", "Status": "Lost",  "id": 3},
+    {"title": "Certificate Biology", "bookCode": "CB-456", "Status": "Found",  "id": 4},
+    {"title": "KMF Mathematics", "bookCode": "KMF-M442", "Status": "Found",  "id": 5},
+    {"title": "KMF Geography", "bookCode": "KMF-G099", "Status": "Lost",  "id": 6},
+    {"title": "Nguu Za Jadi", "bookCode": "NZJ-432", "Status": "Found",  "id": 7},
+    {"title": "Fathers of Nation", "bookCode": "FON-073", "Status": "Found",  "id": 8},
+    {"title": "Bembea ya Maisha", "bookCode": "BYM-335", "Status": "Lost",  "id": 9}
+
+]}
