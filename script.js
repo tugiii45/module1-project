@@ -154,39 +154,8 @@ function updateNav() {
   }
 }
 
-// Page ready
-document.addEventListener('DOMContentLoaded', function() {
-  if (!isLoggedIn() && window.location.pathname.includes('report-') || window.location.pathname.includes('listings.html')) {
-    window.location.href = 'login.html';
-  }
-  updateNav();
-  loadBooks();
-  
-  document.querySelectorAll('.form-section form').forEach(form => {
-    form.addEventListener('submit', saveReportData);
-  });
-  
-  const searchInput = document.getElementById('searchInput');
-  const clearBtn = document.getElementById('clearSearch');
-  if (searchInput) {
-    searchInput.addEventListener('input', function() {
-      const query = this.value.toLowerCase();
-      const filtered = books.filter(book => 
-        book.title?.toLowerCase().includes(query) ||
-        book.bookCode.toLowerCase().includes(query) ||
-        book.Status.toLowerCase().includes(query)
-      );
-      displayBooks(filtered);
-    });
-    document.getElementById('searchButton')?.addEventListener('click', () => searchInput.dispatchEvent(new Event('input')));
-  }
-  if (clearBtn) {
-    clearBtn.addEventListener('click', () => {
-      searchInput.value = '';
-      displayBooks();
-    });
-  }
-});
+// Core functions only - no page-specific init
+// Redirects, form binds, search handled in page JS files
 
 /**
  * Shows books as cards - clears old, builds new
