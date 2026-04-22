@@ -95,6 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
   const searchInput = document.getElementById('searchInput');
+  const clearBtn = document.getElementById('clearSearch');
   if (searchInput) {
     searchInput.addEventListener('input', function() {
       const query = this.value.toLowerCase();
@@ -104,6 +105,13 @@ document.addEventListener('DOMContentLoaded', function() {
         book.Status.toLowerCase().includes(query)
       );
       displayBooks(filtered);
+    });
+    document.getElementById('searchButton')?.addEventListener('click', () => searchInput.dispatchEvent(new Event('input')));
+  }
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      displayBooks();
     });
   }
 });
