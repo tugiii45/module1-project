@@ -1,15 +1,12 @@
-/**
- * LostLeaf Book Tracker - Main JavaScript Application
- * Handles book reporting (lost/found), persistence via localStorage, 
- * dynamic listings display, search, delete, and claim functionality.
- */
 
- // Global books array - stores all lost/found book reports
+
+ // Main book list - grows with user reports
+ // localStorage saves it when page closes
 let books = [];
 
  /**
- * Loads books from localStorage (persistent) or initializes from data.json + fallback.
- * Automatically displays books on load.
+ * Loads books: browser save first, then data.json, then samples
+ * Calls displayBooks to show them
  */
 async function loadBooks() {
   const saved = localStorage.getItem('books');
@@ -20,7 +17,6 @@ async function loadBooks() {
   }
   
   try {
-    // Try loading initial data from data.json
     const response = await fetch('data.json');
     const data = await response.json();
     books = data.books.map(book => ({
@@ -34,7 +30,6 @@ async function loadBooks() {
     displayBooks();
   } catch (e) {
     console.error('Failed to load data.json:', e);
-    // Fallback to hardcoded sample data
     books = [
       {id: 1, title: "KLB Mathematics Form 4", bookCode: "KLB-O743", Status: "Lost"},
       {id: 2, title: "Spotlight Chemistry Form 2", bookCode: "KLB-C456", Status: "Found"},
@@ -46,26 +41,24 @@ async function loadBooks() {
  }
 
  /**
- * Persists the books array to localStorage for cross-session persistence.
+ * Saves book list to browser storage
  */
 function saveBooks() {
   localStorage.setItem('books', JSON.stringify(books));
 }
 
 /**
- * Handles form submission for lost/found reports.
- * Uses data-form-type attribute for form type detection.
- * Saves new book report, resets form, alerts user, redirects to listings.
+ * Saves form data: lost or found book details to list
+ * Clears form, alerts, goes to listings
  */
 function saveReportData(event) {
   event.preventDefault();
   
   const form = event.target;
   const formType = form.dataset.formType;
-  const newBook = { id: Date.now() }; // Unique timestamp-based ID
+  const newBook = { id: Date.now() };
   
   if (formType === 'lost') {
-    // Process lost book report
     newBook.title = form.querySelector('#book-title').value;
     newBook.bookCode = form.querySelector('#bookCode').value;
     newBook.Status = 'Lost';
@@ -74,8 +67,7 @@ function saveReportData(event) {
     newBook.description = form.querySelector('#description').value;
     newBook.reporter = `${form.querySelector('#name').value} (${form.querySelector('#contact').value})`;
   } else if (formType === 'found') {
-    // Process found book report
-    newBook.title = ''; // Title unknown for found books
+    newBook.title = '';
     newBook.bookCode = form.querySelector('#bookCode').value;
     newBook.Status = 'Found';
     newBook.location = form.querySelector('#location-found').value;
@@ -83,7 +75,6 @@ function saveReportData(event) {
     newBook.description = form.querySelector('#description').value;
     newBook.reporter = `${form.querySelector('#finder-name').value} (${form.querySelector('#contact').value})`;
   } else {
-    // Handle contact/other forms
     alert('Message saved locally!');
     return;
   }
@@ -91,20 +82,18 @@ function saveReportData(event) {
   books.push(newBook);
   saveBooks();
   form.reset();
-  alert('Report saved successfully! Check listings.html');
+  alert('Report saved! Check listings.html');
   window.location.href = 'listings.html';
 }
 
-// Document ready - initialize app
+// Page ready: load books, connect forms, add search
 document.addEventListener('DOMContentLoaded', function() {
   loadBooks();
   
-  // Attach submit handlers to all report forms (.form-section form)
   document.querySelectorAll('.form-section form').forEach(form => {
     form.addEventListener('submit', saveReportData);
   });
   
-  // Setup real-time search for listings page
   const searchInput = document.getElementById('searchInput');
   if (searchInput) {
     searchInput.addEventListener('input', function() {
@@ -120,19 +109,17 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 /**
- * Dynamically renders book listings as cards in .listings-section.
- * Clears previous dynamic cards before rendering new ones.
- * Supports filtered arrays for search functionality.
+ * Shows books as cards - clears old, builds new
  */
 function displayBooks(bookArray = books) {
   const container = document.querySelector('.listings-section');
   if (!container) return;
   
-  // Clear previous dynamic content
+  // Remove old cards
   const existingDynamic = container.querySelectorAll('.card[data-dynamic="true"]');
   existingDynamic.forEach(card => container.removeChild(card));
   
-  // Render each book as a card
+  // Add new cards
   bookArray.forEach(book => {
     const card = document.createElement('div');
     card.className = 'card';
@@ -155,22 +142,20 @@ function displayBooks(bookArray = books) {
 }
 
 /**
- * Deletes a book listing by ID after user confirmation.
- * Updates localStorage and refreshes display.
+ * Delete book after confirm, save & refresh
  */
 function deleteBook(id) {
-  if (!confirm('Delete this book listing? This cannot be undone.')) return;
+  if (!confirm('Delete? Cannot undo.')) return;
   books = books.filter(b => b.id !== id);
   saveBooks();
   displayBooks();
 }
 
 /**
- * Claims (removes) a found book listing after confirmation.
- * Updates localStorage and refreshes display.
+ * Claim found book (remove), save & refresh  
  */
 function claimBook(id) {
-  if (!confirm('Claim this found book? It will be removed from listings.')) return;
+  if (!confirm('Claim book? Removes from list.')) return;
   books = books.filter(b => b.id !== id);
   saveBooks();
   displayBooks();
