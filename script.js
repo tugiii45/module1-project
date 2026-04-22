@@ -125,12 +125,7 @@ function updateNav() {
   }
 }
 
-// Core functions only - no page-specific init
-// Redirects, form binds, search handled in page JS files
-
-/**
- * Shows books as cards - clears old, builds new
- */
+ 
 function displayBooks(bookArray = books) {
   const container = document.querySelector('.listings-section');
   if (!container) return;
