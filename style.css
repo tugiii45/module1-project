@@ -234,7 +234,7 @@ body {
    max-width: 600px;
     margin: 40px auto;
     padding: 30px 20px;
-    background-color: rgba(249, 249, 249, 0.9);
+    background-color: rgba(249, 249, 249, 0.5);
     backdrop-filter: blur(10px);
     border-radius: 8px;
     text-align: center;
