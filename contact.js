@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
   if (form) {
     form.addEventListener('submit', function(event) {
       event.preventDefault();
-      alert('Message saved locally!');
+      showMessage('Message saved locally!', 'success');
       form.reset();
     });
   }

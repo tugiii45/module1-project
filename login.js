@@ -19,11 +19,11 @@ function login(username, password) {
     currentUser = username;
     saveCurrentUser();
     updateNav();
-    alert('Logged in!');
+    showMessage('Logged in successfully!', 'success');
     window.location.href = 'index.html';
     return true;
   }
-  alert('Invalid credentials!');
+  showMessage('Invalid credentials!', 'error');
   return false;
 }
 

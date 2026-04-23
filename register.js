@@ -15,12 +15,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function register(username, password) {
   if (users.find(u => u.username === username)) {
-    alert('Username exists!');
+    showMessage('Username exists!', 'error');
     return false;
   }
   users.push({username, password});
   saveUsers();
-  alert('Registered! Please log in.');
+  showMessage('Registered! Please log in.', 'success');
   window.location.href = 'index.html';
   return true;
 }

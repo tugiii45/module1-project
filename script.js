@@ -12,7 +12,7 @@ function logout() {
   currentUser = null;
   localStorage.removeItem('currentUser');
   updateNav();
-  alert('Logged out!');
+  showMessage('Logged out successfully!', 'success');
 }
 
 function updateNav() {
@@ -41,7 +41,7 @@ function saveBooks() {
 function saveReportData(event) {
   event.preventDefault();
   if (!isLoggedIn()) {
-    alert('Please log in to report books.');
+    showMessage('Please log in to report books.', 'error');
     window.location.href = 'login.html';
     return;
   }
@@ -71,7 +71,7 @@ function saveReportData(event) {
   books.push(newBook);
   saveBooks();
   form.reset();
-  alert('Report saved! Check listings.html');
+  showMessage('Report saved! Check listings.html', 'success');
   window.location.href = 'listings.html';
 }
 
