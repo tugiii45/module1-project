@@ -19,8 +19,8 @@ function login(username, password) {
     currentUser = username;
     saveCurrentUser();
     updateNav();
-    showMessage('Logged in successfully!', 'success');
-    window.location.href = 'index.html';
+    showMessage(`Welcome Back, ${username}!`, 'success');
+    setTimeout(() => window.location.href = 'index.html', 2000);
     return true;
   }
   showMessage('Invalid credentials!', 'error');

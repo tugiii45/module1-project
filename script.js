@@ -12,7 +12,7 @@ function logout() {
   currentUser = null;
   localStorage.removeItem('currentUser');
   updateNav();
-  showMessage('Logged out successfully!', 'success');
+  showMessage('Logged out!', 'success');
 }
 
 function updateNav() {

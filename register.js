@@ -20,7 +20,7 @@ function register(username, password) {
   }
   users.push({username, password});
   saveUsers();
-  showMessage('Registered! Please log in.', 'success');
+  showMessage(`Welcome, ${username}! Account created.`, 'success');
   window.location.href = 'index.html';
   return true;
 }
