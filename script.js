@@ -19,7 +19,7 @@ function updateNav() {
   const authLi = document.getElementById('auth-link');
   if (authLi) {
     if (isLoggedIn()) {
-      authLi.innerHTML = `<a href="#" onclick="logout()">Logout (${currentUser})</a>`;
+      authLi.innerHTML = `<a href="#" class="logout-btn" onclick="logout()">Logout (${currentUser})</a>`;
     } else {
       authLi.innerHTML = `<li><a href="login.html">Login</a></li><li><a href="register.html">Register</a></li>`;
     }

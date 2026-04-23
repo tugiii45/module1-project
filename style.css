@@ -31,13 +31,36 @@ body {
     background-color: var(--light-green);
     padding: 15px 40px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    gap: 2rem;
     position: sticky;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
+    flex-wrap: wrap;
+}
+
+.navbar h1 {
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    justify-content: center;
+    flex: 1;
+    max-width: 70%;
+}
+
+#auth-link {
+    margin-left: auto;
+    margin-right: 0;
 }
 
 .navbar h1 {
@@ -125,6 +148,21 @@ body {
 .btn.secondary:hover {
     background-color: var(--primary-green);
     color: white;
+}
+
+.logout-btn {
+    background-color: #dc2626;
+    color: white !important;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.logout-btn:hover {
+    background-color: #b91c1c;
+    color: white !important;
 }
 
 
