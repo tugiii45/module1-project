@@ -21,7 +21,7 @@ function register(username, password) {
   users.push({username, password});
   saveUsers();
   alert('Registered! Please log in.');
-  window.location.href = 'login.html';
+  window.location.href = 'index.html';
   return true;
 }
 

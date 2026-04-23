@@ -20,7 +20,7 @@ function login(username, password) {
     saveCurrentUser();
     updateNav();
     alert('Logged in!');
-    window.history.back();
+    window.location.href = 'index.html';
     return true;
   }
   alert('Invalid credentials!');
