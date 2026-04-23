@@ -108,7 +108,7 @@ function displayBooks(bookArray = books) {
   const container = document.querySelector('.listings-section');
   if (!container) return;
   
-  container.querySelectorAll('.card[data-dynamic="true"]').forEach(card => container.removeChild(card));
+  container.querySelectorAll('.card[data-dynamic="true"], .card.empty-state').forEach(card => container.removeChild(card));
   
   if (bookArray.length === 0) {
     const emptyCard = document.createElement('div');
