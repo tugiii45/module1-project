@@ -1,21 +1,12 @@
-// Utility to show inline messages - to be called globally
 function showMessage(message, type = 'success') {
-  // Remove existing messages
   document.querySelectorAll('.message').forEach(el => el.remove());
   
-  const msgEl = document.createElement('div');
-  msgEl.className = `message ${type}`;
-  msgEl.textContent = message;
-  msgEl.style.position = 'fixed';
-  msgEl.style.top = '20px';
-  msgEl.style.right = '20px';
-  msgEl.style.zIndex = '10000';
-  msgEl.style.maxWidth = '300px';
+  const msg = document.createElement('div');
+  msg.className = `message ${type}`;
+  msg.textContent = message;
+  msg.style.cssText = 'position:fixed;top:20px;right:20px;z-index:10000;max-width:300px;padding:12px;border-radius:6px;font-weight:bold;animation:fadeIn 0.3s;';
   
-  document.body.appendChild(msgEl);
+  document.body.appendChild(msg);
   
-  // Auto remove after 4s
-  setTimeout(() => {
-    if (msgEl.parentNode) msgEl.remove();
-  }, 4000);
+  setTimeout(() => msg.remove(), 4000);
 }
