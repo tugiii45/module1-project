@@ -1,3 +1,4 @@
+// Report found page
 document.addEventListener('DOMContentLoaded', function() {
   updateNav();
 

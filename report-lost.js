@@ -1,3 +1,4 @@
+// Report lost page
 document.addEventListener('DOMContentLoaded', function() {
   updateNav();
 
