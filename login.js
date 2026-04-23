@@ -14,24 +14,5 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-function login(username, password) {
-  const user = users.find(u => u.username === username && u.password === password);
-  if (user) {
-    currentUser = username;
-    saveCurrentUser();
-    updateNav();
-    alert('Logged in!');
-    window.history.back();
-    return true;
-  }
-  alert('Invalid credentials!');
-  return false;
-}
 
-function logout() {
-  currentUser = null;
-  localStorage.removeItem('currentUser');
-  updateNav();
-  alert('Logged out!');
-}
 

@@ -101,10 +101,7 @@ function saveReportData(event) {
 }
 
 
-// Check if user is logged in
-function isLoggedIn() {
-  return !!currentUser;
-}
+function logout() {\n  currentUser = null;\n  localStorage.removeItem('currentUser');\n  updateNav();\n  alert('Logged out!');\n}\n\n// Check if user is logged in\nfunction isLoggedIn() {\n  return !!currentUser;\n}
 
 // Update nav based on login status
 function updateNav() {
