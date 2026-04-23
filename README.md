@@ -17,7 +17,7 @@ This system will simplify the process of recovering lost textbooks and ensures l
 
 - HTML
 - CSS 
-- Optional for future improvement(Javascript)
+- Javascript
 
 ## PLATFORM PAGES
 
