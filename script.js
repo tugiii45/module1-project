@@ -39,7 +39,7 @@ async function loadBooks() {
     displayBooks();
   }
  }
- 
+
 // Save users to localStorage
 function saveUsers() {
   localStorage.setItem('users', JSON.stringify(users));
@@ -100,7 +100,7 @@ function saveReportData(event) {
 }
 
 
-function logout() {\n  currentUser = null;\n  localStorage.removeItem('currentUser');\n  updateNav();\n  alert('Logged out!');\n}\n\n// Check if user is logged in\nfunction isLoggedIn() {\n  return !!currentUser;\n}
+function logout() { currentUser = null;  localStorage.removeItem('currentUser'); updateNav(); alert('Logged out!'); }// Check if user is logged in\nfunction isLoggedIn() {\n  return !!currentUser;\n}
 
 // Update nav based on login status
 function updateNav() {
