@@ -106,11 +106,6 @@ function isLoggedIn() {
   return !!currentUser;
 }
 
-
-
-
-
-
 // Update nav based on login status
 function updateNav() {
   const authLi = document.getElementById('auth-link');
