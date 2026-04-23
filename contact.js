@@ -1,4 +1,4 @@
-// Contact page
+
 document.addEventListener('DOMContentLoaded', function() {
   updateNav();
 
