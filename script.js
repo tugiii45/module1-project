@@ -110,6 +110,14 @@ function displayBooks(bookArray = books) {
   
   container.querySelectorAll('.card[data-dynamic="true"]').forEach(card => container.removeChild(card));
   
+  if (bookArray.length === 0) {
+    const emptyCard = document.createElement('div');
+    emptyCard.className = 'card empty-state';
+    emptyCard.innerHTML = '<h3>No Books Reported Yet</h3><p>Be the first to report a lost or found book!</p>';
+    container.appendChild(emptyCard);
+    return;
+  }
+
   bookArray.forEach(book => {
     const card = document.createElement('div');
     card.className = 'card';
