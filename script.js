@@ -1,13 +1,169 @@
 
-
-// Global state - users, current user, books from localStorage
 let users = JSON.parse(localStorage.getItem('users')) || [];
 let currentUser = localStorage.getItem('currentUser');
 let books = [];
 
+// Init nav on all pages
+document.addEventListener('DOMContentLoaded', function() {
+  updateNav();
+  
+  // Page-specific init
+  initPage();
+});
 
+// Page-specific initialization
+function initPage() {
+  const currentPage = window.location.pathname.split('/').pop();
+  
+  if (currentPage.includes('login')) {
+    initLogin();
+  } else if (currentPage.includes('register')) {
+    initRegister();
+  } else if (currentPage.includes('listings')) {
+    initListings();
+  } else if (currentPage.includes('report-lost')) {
+    initReportLost();
+  } else if (currentPage.includes('report-found')) {
+    initReportFound();
+  } else if (currentPage.includes('contact')) {
+    initContact();
+  }
+}
 
-// Load books from localStorage, data.json, or defaults
+// Auth functions
+function isLoggedIn() {
+  return !!currentUser;
+}
+
+function login(username, password) {
+  const user = users.find(u => u.username === username && u.password === password);
+  if (user) {
+    currentUser = username;
+    saveCurrentUser();
+    updateNav();
+    alert('Logged in!');
+    window.history.back();
+    return true;
+  }
+  alert('Invalid credentials!');
+  return false;
+}
+
+function register(username, password) {
+  if (users.find(u => u.username === username)) {
+    alert('Username exists!');
+    return false;
+  }
+  users.push({username, password});
+  saveUsers();
+  alert('Registered! Please log in.');
+  window.location.href = 'login.html';
+  return true;
+}
+
+function logout() {
+  currentUser = null;
+  localStorage.removeItem('currentUser');
+  updateNav();
+  alert('Logged out!');
+}
+
+function updateNav() {
+  const authLi = document.getElementById('auth-link');
+  if (authLi) {
+    if (isLoggedIn()) {
+      authLi.innerHTML = `<a href="#" onclick="logout()">Logout (${currentUser})</a>`;
+    } else {
+      authLi.innerHTML = `<li><a href="login.html">Login</a></li><li><a href="register.html">Register</a></li>`;
+    }
+  }
+}
+
+// Storage functions
+function saveUsers() {
+  localStorage.setItem('users', JSON.stringify(users));
+}
+
+function saveCurrentUser() {
+  localStorage.setItem('currentUser', currentUser);
+}
+
+// Page inits
+function initLogin() {
+  const form = document.getElementById('loginForm');
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const username = document.getElementById('loginUsername').value;
+      const password = document.getElementById('loginPassword').value;
+      login(username, password);
+    });
+  }
+}
+
+function initRegister() {
+  const form = document.getElementById('registerForm');
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const username = document.getElementById('regUsername').value;
+      const password = document.getElementById('regPassword').value;
+      register(username, password);
+    });
+  }
+}
+
+function initListings() {
+  if (!isLoggedIn()) {
+    const section = document.querySelector('.listings-section');
+    if (section) section.innerHTML = '<div class="auth-message"><h2>Please <a href="login.html">log in</a> to view listings.</h2></div>';
+    return;
+  }
+  
+  loadBooks();
+  
+  const searchInput = document.getElementById('searchInput');
+  if (searchInput) {
+    const handleSearch = () => {
+      const query = searchInput.value.toLowerCase();
+      const filtered = books.filter(book => 
+        (book.title || '').toLowerCase().includes(query) ||
+        book.bookCode.toLowerCase().includes(query) ||
+        (book.Status || '').toLowerCase().includes(query)
+      );
+      displayBooks(filtered);
+    };
+    searchInput.addEventListener('input', handleSearch);
+    document.getElementById('searchButton').addEventListener('click', handleSearch);
+    document.getElementById('clearSearch').addEventListener('click', () => {
+      searchInput.value = '';
+      displayBooks();
+    });
+  }
+}
+
+function initReportLost() {
+  const form = document.querySelector('form[data-form-type="lost"]');
+  if (form) form.addEventListener('submit', saveReportData);
+}
+
+function initReportFound() {
+  const form = document.querySelector('form[data-form-type="found"]');
+  if (form) form.addEventListener('submit', saveReportData);
+}
+
+function initContact() {
+  const form = document.querySelector('.form-section form');
+  if (form) {
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      alert('Message saved locally!');
+      form.reset();
+    });
+  }
+}
+
+// Books functions
 async function loadBooks() {
   const saved = localStorage.getItem('books');
   if (saved) {
@@ -40,25 +196,10 @@ async function loadBooks() {
   }
  }
 
-// Save users to localStorage
-function saveUsers() {
-  localStorage.setItem('users', JSON.stringify(users));
-}
-
-
-// Save current user to localStorage
-function saveCurrentUser() {
-  localStorage.setItem('currentUser', currentUser);
-}
-
-
-// Save books to localStorage
 function saveBooks() {
   localStorage.setItem('books', JSON.stringify(books));
 }
 
-
-// Save report data (lost/found books)
 function saveReportData(event) {
   event.preventDefault();
   if (!isLoggedIn()) {
@@ -99,24 +240,6 @@ function saveReportData(event) {
   window.location.href = 'listings.html';
 }
 
-
-function logout() { currentUser = null;  localStorage.removeItem('currentUser'); updateNav(); alert('Logged out!'); }// Check if user is logged in\nfunction isLoggedIn() {\n  return !!currentUser;\n}
-
-// Update nav based on login status
-function updateNav() {
-  const authLi = document.getElementById('auth-link');
-  if (authLi) {
-    if (isLoggedIn()) {
-      authLi.innerHTML = `<a href="#" onclick="logout()">Logout (${currentUser})</a>`;
-    } else {
-      authLi.innerHTML = `<li><a href="login.html">Login</a></li><li><a href="register.html">Register</a></li>`;
-    }
-  }
-}
-
-
- 
-// Render books as cards
 function displayBooks(bookArray = books) {
   const container = document.querySelector('.listings-section');
   if (!container) return;
@@ -134,7 +257,7 @@ function displayBooks(bookArray = books) {
       <h3>${book.title || 'Unknown Title'}</h3>
       <p><strong>Book Code:</strong> ${book.bookCode}</p>
       <p><strong>Status:</strong> <span class="status-${book.Status.toLowerCase()}">${book.Status}</span></p>
-      ${book.location ? `<p><strong>${book.Status === 'Lost' ? 'Last Seen:' : 'Found At:'}</strong> ${book.location}</p>` : ''}
+      ${book.location ? `<p><strong>${book.Status === 'Lost' ? 'Last Seen:' : 'Found At:'} </strong> ${book.location}</p>` : ''}
       ${book.date ? `<p><strong>Date:</strong> ${book.date}</p>` : ''}
       ${book.description ? `<p><strong>Description:</strong> ${book.description}</p>` : ''}
       ${book.reporter ? `<p><strong>Reported By:</strong> ${book.reporter}</p>` : ''}
@@ -147,8 +270,6 @@ function displayBooks(bookArray = books) {
   });
 }
 
-
-// Delete book after confirmation
 function deleteBook(id) {
   if (!confirm('Delete? Cannot undo.')) return;
   books = books.filter(b => b.id !== id);
@@ -156,14 +277,10 @@ function deleteBook(id) {
   displayBooks();
 }
 
-
-
-// Claim found book (remove from list)
 function claimBook(id) {
   if (!confirm('Claim book? Removes from list.')) return;
   books = books.filter(b => b.id !== id);
   saveBooks();
   displayBooks();
 }
-
 
