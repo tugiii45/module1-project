@@ -39,8 +39,7 @@ async function loadBooks() {
     displayBooks();
   }
  }
-
-
+ 
 // Save users to localStorage
 function saveUsers() {
   localStorage.setItem('users', JSON.stringify(users));
