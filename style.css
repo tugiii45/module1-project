@@ -254,6 +254,33 @@ form {
     flex-direction: column;
 }
 
+.two-column-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    text-align: left;
+}
+
+.two-column-form .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.two-column-form label {
+    margin-top: 0;
+}
+
+.two-column-form input {
+    max-width: 100%;
+    margin: 0;
+}
+
+.two-column-form .form-button {
+    grid-column: span 2;
+    justify-self: center;
+    margin-top: 10px;
+}
+
 label {
     margin-top: 15px;
     margin-bottom: 5px;
