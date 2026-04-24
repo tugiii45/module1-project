@@ -25,3 +25,7 @@ function register(username, password) {
   return true;
 }
 
+function validatePasswords() {
+  const password = document.getElementById(reg)
+}
+
