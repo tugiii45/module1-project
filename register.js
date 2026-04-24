@@ -28,7 +28,9 @@ function register(username, password) {
   users.push({username, password});
   saveUsers();
   showMessage(`Welcome, ${username}! Account created.`, 'success');
-  window.location.href = 'index.html';
+  setTimeout(() => {
+    window.location.href = 'index.html';
+  }, 2500);
   return true;
 }
 
