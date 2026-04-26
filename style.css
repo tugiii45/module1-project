@@ -171,6 +171,21 @@ body {
     color: white !important;
 }
 
+.login-btn {
+    background-color: var(--primary-green);
+    color: white !important;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.login-btn:hover {
+    background-color: var(--dark-green);
+    color: white !important;
+}
+
 
 .features {
     padding: 50px 20px;
