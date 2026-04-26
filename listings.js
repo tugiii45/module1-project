@@ -2,7 +2,13 @@
 document.addEventListener('DOMContentLoaded', function() {
   if (!isLoggedIn()) {
     const section = document.querySelector('.listings-section');
-    if (section) section.innerHTML = '<div class="auth-message"><h2>Please <a href="login.html">log in</a> to view listings.</h2></div>';
+    if (section) {
+      section.innerHTML = `
+        <div class="auth-message">
+          <p>Please <a href="login.html">log in</a> to view listings.</p>
+        </div>
+      `;
+    }
     return;
   }
   
