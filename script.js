@@ -21,7 +21,7 @@ function updateNav() {
     if (isLoggedIn()) {
       authLi.innerHTML = `<a href="#" class="logout-btn" onclick="logout()">Logout (${currentUser})</a>`;
     } else {
-      authLi.innerHTML = `<li><a href="login.html">Login</a></li><li><a href="register.html">Register</a></li>`;
+      authLi.innerHTML = `<li><a href="login.html">Login</a></li>`;
     }
   }
 }
