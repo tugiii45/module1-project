@@ -147,12 +147,37 @@ function deleteBook(id) {
 }
 
 function claimBook(id) {
-  if (!confirm('Claim book? Removes from list.')) return;
+  const cards = document.querySelectorAll('.card[data-dynamic="true"]');
+  let targetCard = null;
+  cards.forEach(card => {
+    const btn = card.querySelector(`button[onclick="claimBook(${id})"]`);
+    if (btn) targetCard = card;
+  });
+  
+  if (!targetCard) return;
+  
+  const actionsDiv = targetCard.querySelector('.card-actions');
+  if (!actionsDiv) return;
+  
+  actionsDiv.innerHTML = `
+    <div class="inline-confirm">
+      <p>Claim book? Removes from list.</p>
+      <div class="inline-confirm-buttons">
+        <button onclick="confirmClaim(${id})" class="confirm-btn">Confirm</button>
+        <button onclick="cancelClaim(${id})" class="cancel-btn">Cancel</button>
+      </div>
+  `;
+}
+
+function confirmClaim(id) {
   books = books.filter(b => b.id !== id);
   saveBooks();
   if (typeof displayBooks === 'function') displayBooks();
 }
 
+function cancelClaim(id) {
+  if (typeof displayBooks === 'function') displayBooks();
+}
+
 // DOMContentLoaded for nav only
 document.addEventListener('DOMContentLoaded', updateNav);
-
